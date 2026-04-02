@@ -50,13 +50,13 @@ class StatusCheckCreate(BaseModel):
     client_name: str
 
 class ReferralForm(BaseModel):
-    empresa: str
-    funcionario: str
-    funcao: str
-    tipo_aso: str
+    empresa: str = Field(..., min_length=1)
+    funcionario: str = Field(..., min_length=1)
+    funcao: str = Field(..., min_length=1)
+    tipo_aso: str = Field(..., min_length=1)
     audiometria: bool
     laboratorio: List[str]
-    autorizado_por: str
+    autorizado_por: str = Field(..., min_length=1)
 
 class ReferralFormStored(BaseModel):
     model_config = ConfigDict(extra="ignore")
