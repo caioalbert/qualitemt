@@ -1,0 +1,73 @@
+{
+  "theme": "light",
+  "archetype": "4",
+  "archetype_name": "Swiss & High-Contrast",
+  "design_philosophy": "Modern, intuitive, and serious. Uses clean lines, highly legible typography, and structured layout (Archetype 4) to evoke medical trust. Uses card-based inputs for checkboxes to reduce cognitive load and provide a modern touch.",
+  "colors": {
+    "primary": "#0A192F",
+    "primary_description": "Dark Blue (Azul Escuro) - used for primary text, main buttons, and strong layout elements to convey seriousness.",
+    "secondary": "#0F766E",
+    "secondary_description": "Petroleum Blue / Teal (Teal/Azul Petróleo) - used for active states, selected borders, and highlights.",
+    "accent": "#FACC15",
+    "accent_description": "Yellow (Amarelo) - used sparingly for warnings, badges, or secondary highlights.",
+    "background": "#F8FAFC",
+    "surface": "#FFFFFF",
+    "border": "#E2E8F0",
+    "text_main": "#0F172A",
+    "text_muted": "#64748B",
+    "success": "#10B981",
+    "error": "#EF4444"
+  },
+  "typography": {
+    "heading_font": "Outfit",
+    "body_font": "Manrope",
+    "strategies": [
+      "Headings should use tracking-tight (letter-spacing: -0.025em) and bold weights (font-bold) in the primary dark blue color.",
+      "Section overlines (e.g., 'Exames Laboratoriais') should be uppercase, tracking-[0.2em], text-sm, and bold.",
+      "Body text should be clear and highly legible (text-base or text-lg for form inputs)."
+    ]
+  },
+  "layout": {
+    "structure": "Desktop: Split two-column layout. Left column (40% width, fixed) features the clinic background image with a dark overlay, the logo, and a welcome message. Right column (60% width, scrollable) contains the form. Mobile: Single column, image header, followed by form.",
+    "spacing": "Use generous spacing. Form sections should be wrapped in surface cards (bg-white) with generous padding (p-8) and separated by gap-8.",
+    "alignment": "Left-align form inputs and labels for readability."
+  },
+  "components": {
+    "inputs": "Use Shadcn UI inputs. Override default styles to be larger (h-12), with rounded-lg borders, border-slate-300. On focus: ring-2 ring-[#0F766E] border-transparent.",
+    "checkboxes_and_radios": "DO NOT use standard small checkboxes. Transform them into clickable interactive cards. Use a flex or grid layout of cards (border border-slate-200, rounded-lg, p-4, cursor-pointer, transition-all). When selected, change border to border-[#0F766E], background to bg-teal-50, and text to text-[#0F766E].",
+    "buttons": "Primary submit button should be large (h-14, text-lg, font-bold), bg-[#0A192F] (Dark Blue), text-white, hover:bg-[#0F766E] (Petroleum Blue) transition-colors.",
+    "cards": "Use flat solid surfaces for form groups. No heavy shadows, just 1px border and shadow-sm to keep it clinical and clean. Avoid glassmorphism for medical tools."
+  },
+  "animations": {
+    "hover_states": "Interactive cards lift slightly (-translate-y-0.5) and gain shadow-md on hover.",
+    "transitions": "Use transition-all duration-200 ease-in-out universally for interactive elements.",
+    "success_state": "Upon submission, replace form with a success view: centered content, a large green checkmark (animating in with scale and opacity), and a 'Thank You' message confirming the email was sent."
+  },
+  "images": {
+    "hero_background": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/d03b0202-fa49-409a-b41c-70fcf31e4cc9/images/35e403302b201e179cd1a5bd48da4d6c50dfc08e215baf04b401f5403deb2bbc.png",
+      "description": "Abstract, clean medical clinic architectural background.",
+      "placement": "Used as the cover image for the left column (desktop) or top header (mobile). Must have a bg-black/40 overlay to ensure any overlaid text/logo is legible."
+    },
+    "logo": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/d03b0202-fa49-409a-b41c-70fcf31e4cc9/images/adb96a8628b75a0733da6ee9408bd463dd09b315a3b0a23fb02c432a133053df.png",
+      "description": "Qualite MT modern vector logo",
+      "placement": "Placed prominently over the background in the left column, or at the top of the form. Use rounded corners or a white backing if it needs contrast."
+    }
+  },
+  "icons": {
+    "library": "lucide-react",
+    "usage": "Use icons inside the selectable cards (e.g., Stethoscope for ASO, Ear for Audiometria, TestTubes for Laboratório) to make it intuitive and modern."
+  },
+  "instructions_to_main_agent": [
+    "1. Setup a React page with a two-column split layout (left side fixed branding, right side scrollable form).",
+    "2. Add Google Fonts 'Outfit' and 'Manrope' to the application.",
+    "3. Use react-hook-form + zod for state and validation. Fields required: Empresa, Funcionário, Função, Autorizado por.",
+    "4. For 'Tipo de ASO', implement as a set of visually distinct, clickable cards (Radio group behavior, as usually an employee only has one ASO type at a time). Options: Admissional, Retorno ao trabalho, Periódico, Mudança de função, Demissional.",
+    "5. For 'Exames Complementares', implement 'Audiometria' as a toggle card.",
+    "6. For 'Exames Laboratoriais', implement a CSS grid (grid-cols-1 sm:grid-cols-2) of checkbox cards. Options: Hemograma Completo, Sumário de Urina, Parasitológico de Fezes, Coprocultura, Beta, Glicemia.",
+    "7. Implement a mock email sending function (e.g., a 1.5s Promise delay) on form submit.",
+    "8. After successful submit, unmount the form and mount a Success State component thanking the user and confirming the email was sent to the clinic.",
+    "9. Ensure every input, button, and selectable card has a relevant data-testid attribute for testing."
+  ]
+}
