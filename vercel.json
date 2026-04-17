@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && yarn build",
+  "buildCommand": "cd frontend && yarn install && yarn build",
   "outputDirectory": "frontend/build",
+  "installCommand": "cd api && npm install",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/index.js" },
     { "source": "/(.*)", "destination": "/$1" }
