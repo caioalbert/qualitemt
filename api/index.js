@@ -41,11 +41,11 @@ const Referral = mongoose.models.Referral || mongoose.model('Referral', new mong
 }));
 
 // Routes
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ message: 'Hello World' });
 });
 
-app.post('/api/status', async (req, res) => {
+app.post('/status', async (req, res) => {
   try {
     await connectDB();
     const { client_name } = req.body;
@@ -56,7 +56,7 @@ app.post('/api/status', async (req, res) => {
   }
 });
 
-app.get('/api/status', async (req, res) => {
+app.get('/status', async (req, res) => {
   try {
     await connectDB();
     const checks = await StatusCheck.find({}, { _id: 0, __v: 0 });
@@ -66,7 +66,7 @@ app.get('/api/status', async (req, res) => {
   }
 });
 
-app.post('/api/referral', async (req, res) => {
+app.post('/referral', async (req, res) => {
   try {
     await connectDB();
     const { empresa, funcionario, funcao, tipo_aso, audiometria, laboratorio, autorizado_por } = req.body;
