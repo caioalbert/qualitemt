@@ -94,7 +94,8 @@ const ReferralForm = () => {
       setSelectedLab([]);
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Erro ao enviar formulário. Tente novamente.');
+      const msg = error?.response?.data?.detail || error?.message || 'Erro desconhecido';
+      alert(`Erro ao enviar formulário: ${msg}`);
     } finally {
       setIsSubmitting(false);
     }
